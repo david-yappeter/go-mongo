@@ -1,0 +1,23 @@
+type User {
+    id: ID!
+    name: String!
+    created_at: String
+    updated_at: String
+}
+
+input NewUser {
+    name: String!
+}
+
+input UpdateUser {
+    id: ID!
+    name: String!
+}
+
+type UserOps {
+    create(input: NewUser!): User! @goField(forceResolver: true)
+    create_batch(input: [NewUser!]!): [User!]! @goField(forceResolver: true)
+    update(input: UpdateUser!): User! @goField(forceResolver: true)
+    delete(id: ID!): String! @goField(forceResolver: true)
+    # delete_all: String! @goField(forceResolver: true)
+}
